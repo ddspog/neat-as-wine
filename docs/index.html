@@ -136,7 +136,7 @@
 <section class="blog" id="blog">
     <div class="container">
         <div class="row center-xs">
-            <div class="col-xs-12"><h1>Latest Posts</h1></div>
+            <div class="col-xs-12"><h1>Últimos Posts</h1></div>
         </div>
         <div class="row">
             <div class="col-xs-12 posts-list">
@@ -144,14 +144,14 @@
                     <article>
                         <h2><a href="https://ddspog.github.io/neat-as-wine/blog/boqueirao-volume/">O volume de Boqueirão</a></h2>
                         <div class=sub-header>
-                          November 2017 · 2 minute read
+                          14/Nov de 2017 · Lido há 2 minutos
                         </div>
                     </article>
                 
             </div>
         </div>
         <div class="row center-xs">
-            <div class="col-xs-12"><h3><a href="https://ddspog.github.io/neat-as-wine//blog/">View All</a></h3></div>
+            <div class="col-xs-12"><h3><a href="https://ddspog.github.io/neat-as-wine//blog/">Ver todos</a></h3></div>
         </div>
     </div>
 </section>
@@ -159,83 +159,97 @@
 <section class="contact" id="contact">
     <div class="container">
         <div class="row center-xs">
-            <div class="col-xs-12"><h1>Let's Chat</h1></div>
+            <div class="col-xs-12"><h1>Contate-nos</h1></div>
         </div>
         <form id="form-contact" action="https://formspree.io/" method="POST">
             <div class="row center-xs">
-                <div class="col-xs-12 col-sm-6"><input type="text" name="name" placeholder="Name" required></div>
+                <div class="col-xs-12 col-sm-6"><input type="text" name="name" placeholder="Nome" required></div>
                 <div class="col-xs-12 col-sm-6"><input type="email" name="email" placeholder="Email" required></div>
-                <div class="col-xs-12"><input type="text" name="_subject" placeholder="Subject" required></div>
-                <div class="col-xs-12"><textarea name="message" placeholder="Message" required></textarea></div>
+                <div class="col-xs-12"><input type="text" name="_subject" placeholder="Assunto" required></div>
+                <div class="col-xs-12"><textarea name="message" placeholder="Mensagem" required></textarea></div>
                 <input type="text" name="_gotcha" style="display:none">
                 <input type="hidden" name="_next" value="/">
-                <div class="col-xs-6" id="form-submit"><input type="submit" value="Send"></div>
-                <div class="col-xs-12" id="form-thankyou" style="display:none;">Thanks for your email!</div>
+                <div class="col-xs-6" id="form-submit"><input type="submit" value="Enviar"></div>
+                <div class="col-xs-12" id="form-thankyou" style="display:none;">Obrigado pelo seu email!</div>
             </div>
         </form>
     </div>
 </section>
 
-</main>
-<footer class="row middle-xs center-xs">
-    
-    <div class="col-xs-3 col-md-2"><a href="https://github.com/ddspog">GitHub</a></div>
-       
-    <div class="col-xs-12">
-         Copyright &copy; 2017 Neat as Wine.   Theme developed by <a href="https://tomanistor.com">Toma Nistor</a>. 
-    </div>
-    
-    
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
-    
-    <script src="https://ddspog.github.io/neat-as-wine//scripts/index.js"
-        type="text/javascript"></script>
-        
-        
-        <script>
-            $("#form-contact").on("submit", function (e) {
-                e.preventDefault();
-
+        </main>
+        <footer class="row middle-xs center-xs">
+            
+            <div class="col-xs-3 col-md-2"><a href="https://github.com/ddspog">GitHub</a></div>
+            
+            
+            
+            
+            <div class="col-xs-12">
                 
-                var name = $("input[name=name]").val();
-                var email = $("input[name=email").val();
-                var subject = $("input[name=_subject").val();
-                var message = $("textarea[name=message]").val();
-
+                Copyright &copy; 2017 Neat as Wine.
                 
-                $.ajax({
-                    url: "https://formspree.io/",
-                    method: "POST",
-                    data: {
-                        name: name,
-                        _replyto: email,
-                        email: email,
-                        _subject: subject,
-                        message: message,
-                    },
-                    dataType: "json",
-                    success: function () {
-                        console.log("Form successfully sent");
-                        
-                        $("#form-contact").get(0).reset();
-                        
-                        $("#form-submit").fadeOut(function () {
-                            $("#form-thankyou").fadeIn(function () {
-                                $("#form-thankyou").delay(4000).fadeOut(function () {
-                                    $("#form-submit").fadeIn();
-                                });
-                            });
-                        });
-                    }
-                });
+                
+                Tema desenvolvido por <a href="https://tomanistor.com">Toma Nistor</a>.
+                
+                
+                <div>Ícones feitos por 
+                    <a href="http://www.freepik.com" title="Freepik">Freepik</a> e
+                    <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>, licenciados por 
+                    <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0"
+                        target="_blank">CC 3.0 BY</a>
+                </div>
+                
+            </div>
+            
+            
+            <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+            
+            <script src="https://ddspog.github.io/neat-as-wine//scripts/index.js" type="text/javascript"></script>
+            
+            
+            <script>
+              $("#form-contact").on("submit", function(e) {
+                  e.preventDefault();
 
-            });
-        </script>
-         
-    
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
-</footer>
-</body>
+                  
+                  var name = $("input[name=name]").val();
+                  var email = $("input[name=email").val();
+                  var subject = $("input[name=_subject").val();
+                  var message = $("textarea[name=message]").val();
 
+                  
+                  $.ajax({
+                      url:"https://formspree.io/",
+                      method:"POST",
+                      data:{
+                          name:name,
+                          _replyto:email,
+                          email:email,
+                          _subject:subject,
+                          message:message,
+                      },
+                      dataType:"json",
+                      success:function() {
+                          console.log("Form successfully sent");
+                          
+                          $("#form-contact").get(0).reset();
+                          
+                          $("#form-submit").fadeOut(function(){
+                              $("#form-thankyou").fadeIn(function(){
+                                  $("#form-thankyou").delay(4000).fadeOut(function(){
+                                      $("#form-submit").fadeIn();
+                                  });
+                              });
+                          });
+                      }
+                  });
+
+              });
+            </script>
+            
+            
+            <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
+        </footer>
+    </body>
 </html>
+
