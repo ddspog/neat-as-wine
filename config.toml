@@ -5,15 +5,17 @@ languageCode = "pt-br"
 config = "config.toml"
 theme = "osprey-ptbr"
 publishDir = "docs"
+DisqusShortname = "neat-as-wine"
 
 [Params]
     tagline = "DataVis Blog por ddspog"
     author = "Dênnis Dantas de Sousa"
-    description = ""
+    description = "Um blog para falar de dados elegantes."
     logoBig = "/images/wine.png"
     logoSmall = "/images/wine-logo.png"
     opengraphImage = "/images/wine.png"
     github = "ddspog"
+    email = "ddspog@gmail.com"
     highlightJS = true
     copyright = true
     credit = true
