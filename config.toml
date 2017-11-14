@@ -1,5 +1,5 @@
 title = "Neat as Wine"
-baseURL = "http://example.org/"
+baseURL = "https://ddspog.github.io/neat-as-wine/"
 tags = ["data visualization", "data analysis", "data science", "blog"]
 languageCode = "pt-br"
 config = "config.toml"
