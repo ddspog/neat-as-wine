@@ -1,7 +1,7 @@
 ---
 title: "Sobre"
 date: 2017-11-14T01:22:25-02:00
-draft: true
+draft: false
 ---
 # O blog Neat as Wine
 
