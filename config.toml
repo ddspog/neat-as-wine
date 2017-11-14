@@ -1,0 +1,37 @@
+title = "Neat as Wine"
+baseURL = "http://example.org/"
+tags = ["data visualization", "data analysis", "data science", "blog"]
+languageCode = "pt-br"
+config = "config.toml"
+theme = "osprey"
+publishDir = "docs"
+
+[Params]
+    tagline = "DataVis Blog por ddspog"
+    author = "Dênnis Dantas de Sousa"
+    description = ""
+    logoBig = "/images/wine.png"
+    logoSmall = "/images/wine-logo.png"
+    opengraphImage = "/images/wine.png"
+    github = "ddspog"
+    highlightJS = true
+    copyright = true
+    credit = true
+    freepik = true
+    customCSS = true
+    cacheBustCSS = false
+    cacheBustJS = false
+    ajaxFormspree = true
+
+[[menu.main]]
+    name = "Sobre"
+    url = "/#about"
+    weight = 1
+[[menu.main]]
+    name = "Blog"
+    url = "/#blog"
+    weight = 2
+[[menu.main]]
+    name = "Contato"
+    url = "/#contact"
+    weight = 3
