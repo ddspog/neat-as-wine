@@ -1,0 +1,9 @@
+local:
+  cmds:
+    - echo "Running site on localhost ..."
+    - hugo server -D
+
+compile:
+  cmds:
+    - echo "Compiling site to docs/ ..."
+    - hugo
