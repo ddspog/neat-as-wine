@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Neat as Wine</title>
-    <link>https://ddspog.github.io/neat-as-wine/</link>
-    <description>Recent content on Neat as Wine</description>
+    <title>Blogs on Neat as Wine</title>
+    <link>https://ddspog.github.io/neat-as-wine/blog/</link>
+    <description>Recent content in Blogs on Neat as Wine</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>true</copyright>
     <lastBuildDate>Tue, 14 Nov 2017 00:56:51 -0200</lastBuildDate>
     
-	<atom:link href="https://ddspog.github.io/neat-as-wine/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ddspog.github.io/neat-as-wine/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
