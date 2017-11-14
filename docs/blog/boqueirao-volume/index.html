@@ -118,103 +118,105 @@ Nos últimos anos, a Paraíba esteve em um período longo de estiagem, particula
 
 <div id="vis" width=900></div>
 
-<p><script src="https://cdnjs.cloudflare.com/ajax/libs/vega/3.0.7/vega.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vega/3.0.7/vega.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-lite/2.0.1/vega-lite.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-embed/3.0.0-rc7/vega-embed.js"></script>
+
 <script>
     const spec = {
-        &ldquo;$schema&rdquo;: &ldquo;<a href="https://vega.github.io/schema/vega-lite/v2.json&quot;">https://vega.github.io/schema/vega-lite/v2.json&quot;</a>,
-        &ldquo;data&rdquo;: {
-            &ldquo;url&rdquo;: &ldquo;<a href="https://api.insa.gov.br/reservatorios/12172/monitoramento&quot;">https://api.insa.gov.br/reservatorios/12172/monitoramento&quot;</a>,
-            &ldquo;format&rdquo;: {
-                &ldquo;type&rdquo;: &ldquo;json&rdquo;,
-                &ldquo;property&rdquo;: &ldquo;volumes&rdquo;,
-                &ldquo;parse&rdquo;: {
-                    &ldquo;DataInformacao&rdquo;: &ldquo;utc:&lsquo;%d/%m/%Y&rsquo;&rdquo;
+        "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+        "data": {
+            "url": "https://api.insa.gov.br/reservatorios/12172/monitoramento",
+            "format": {
+                "type": "json",
+                "property": "volumes",
+                "parse": {
+                    "DataInformacao": "utc:'%d/%m/%Y'"
                 }
             }
         },
-        &ldquo;transform&rdquo;: [{
-            &ldquo;calculate&rdquo;: &ldquo;100*datum.Volume/datum.VolumePercentual&rdquo;,
-            &ldquo;as&rdquo;: &ldquo;TamanhoAcude&rdquo;
+        "transform": [{
+            "calculate": "100*datum.Volume/datum.VolumePercentual",
+            "as": "TamanhoAcude"
         }, {
-            &ldquo;calculate&rdquo;: &ldquo;datum.Volume/411.71*100.0&rdquo;,
-            &ldquo;as&rdquo;: &ldquo;VolumePercentualCorrigido&rdquo;
+            "calculate": "datum.Volume/411.71*100.0",
+            "as": "VolumePercentualCorrigido"
         }],
-        &ldquo;vconcat&rdquo;: [{
-            &ldquo;title&rdquo;: {
-                &ldquo;text&rdquo;: &ldquo;Volume do Açude Boqueirão 1999-2017&rdquo;
+        "vconcat": [{
+            "title": {
+                "text": "Volume do Açude Boqueirão 1999-2017"
             },
-            &ldquo;width&rdquo;: 700,
-            &ldquo;height&rdquo;: 295,
-            &ldquo;mark&rdquo;: &ldquo;point&rdquo;,
-            &ldquo;encoding&rdquo;: {
-                &ldquo;x&rdquo;: {
-                    &ldquo;field&rdquo;: &ldquo;DataInformacao&rdquo;,
-                    &ldquo;type&rdquo;: &ldquo;temporal&rdquo;,
-                    &ldquo;scale&rdquo;: {
-                        &ldquo;domain&rdquo;: {
-                            &ldquo;selection&rdquo;: &ldquo;brush&rdquo;
+            "width": 700,
+            "height": 295,
+            "mark": "point",
+            "encoding": {
+                "x": {
+                    "field": "DataInformacao",
+                    "type": "temporal",
+                    "scale": {
+                        "domain": {
+                            "selection": "brush"
                         }
                     },
-                    &ldquo;axis&rdquo;: {
-                        &ldquo;title&rdquo;: &ldquo;&rdquo;
+                    "axis": {
+                        "title": ""
                     }
                 },
-                &ldquo;y&rdquo;: {
-                    &ldquo;field&rdquo;: &ldquo;VolumePercentualCorrigido&rdquo;,
-                    &ldquo;type&rdquo;: &ldquo;quantitative&rdquo;,
-                    &ldquo;axis&rdquo;: {
-                        &ldquo;title&rdquo;: &ldquo;Volume de Boqueirão (%)&rdquo;
+                "y": {
+                    "field": "VolumePercentualCorrigido",
+                    "type": "quantitative",
+                    "axis": {
+                        "title": "Volume de Boqueirão (%)"
                     }
                 }
             }
         }, {
-            &ldquo;width&rdquo;: 700,
-            &ldquo;height&rdquo;: 60,
-            &ldquo;mark&rdquo;: &ldquo;area&rdquo;,
-            &ldquo;selection&rdquo;: {
-                &ldquo;brush&rdquo;: {
-                    &ldquo;type&rdquo;: &ldquo;interval&rdquo;,
-                    &ldquo;encodings&rdquo;: [
-                        &ldquo;x&rdquo;
+            "width": 700,
+            "height": 60,
+            "mark": "area",
+            "selection": {
+                "brush": {
+                    "type": "interval",
+                    "encodings": [
+                        "x"
                     ],
-                    &ldquo;on&rdquo;: &ldquo;[mousedown, window:mouseup] &gt; window:mousemove!&ldquo;,
-                    &ldquo;translate&rdquo;: &ldquo;[mousedown, window:mouseup] &gt; window:mousemove!&ldquo;,
-                    &ldquo;zoom&rdquo;: &ldquo;wheel!&rdquo;,
-                    &ldquo;mark&rdquo;: {
-                        &ldquo;fill&rdquo;: &ldquo;#333&rdquo;,
-                        &ldquo;fillOpacity&rdquo;: 0.125,
-                        &ldquo;stroke&rdquo;: &ldquo;white&rdquo;
+                    "on": "[mousedown, window:mouseup] > window:mousemove!",
+                    "translate": "[mousedown, window:mouseup] > window:mousemove!",
+                    "zoom": "wheel!",
+                    "mark": {
+                        "fill": "#333",
+                        "fillOpacity": 0.125,
+                        "stroke": "white"
                     },
-                    &ldquo;resolve&rdquo;: &ldquo;global&rdquo;
+                    "resolve": "global"
                 }
             },
-            &ldquo;encoding&rdquo;: {
-                &ldquo;x&rdquo;: {
-                    &ldquo;field&rdquo;: &ldquo;DataInformacao&rdquo;,
-                    &ldquo;type&rdquo;: &ldquo;temporal&rdquo;,
-                    &ldquo;axis&rdquo;: {
-                        &ldquo;title&rdquo;: &ldquo;Selecione o Período&rdquo;,
-                        &ldquo;format&rdquo;: &ldquo;%Y&rdquo;
+            "encoding": {
+                "x": {
+                    "field": "DataInformacao",
+                    "type": "temporal",
+                    "axis": {
+                        "title": "Selecione o Período",
+                        "format": "%Y"
                     }
                 },
-                &ldquo;y&rdquo;: {
-                    &ldquo;field&rdquo;: &ldquo;VolumePercentualCorrigido&rdquo;,
-                    &ldquo;type&rdquo;: &ldquo;quantitative&rdquo;,
-                    &ldquo;axis&rdquo;: {
-                        &ldquo;title&rdquo;: &ldquo;&rdquo;,
-                        &ldquo;tickCount&rdquo;: 3,
-                        &ldquo;grid&rdquo;: false
+                "y": {
+                    "field": "VolumePercentualCorrigido",
+                    "type": "quantitative",
+                    "axis": {
+                        "title": "",
+                        "tickCount": 3,
+                        "grid": false
                     }
                 }
             }
         }]
     };
-    vegaEmbed(&lsquo;#vis&rsquo;, spec).catch(console.warn);
+    vegaEmbed('#vis', spec).catch(console.warn);
 </script>
-<!-- markdownlint-enable MD033 --></p>
 
+<!-- markdownlint-enable MD033 -->
+ 
             </article>
 
             <div class="pagination">
@@ -242,30 +244,23 @@ Nos últimos anos, a Paraíba esteve em um período longo de estiagem, particula
 
     </section>
 
-        </main>
-        <footer class="row middle-xs center-xs">
-            
-            <div class="col-xs-3 col-md-2"><a href="https://github.com/ddspog">GitHub</a></div>
-            
-            
-            
-            
-            <div class="col-xs-12">
-                
-                Copyright &copy; 2017 Neat as Wine.
-                
-                
-                Theme developed by <a href="https://tomanistor.com">Toma Nistor</a>.
-                
-            </div>
-            
-            
-            <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-            
-            <script src="/scripts/main.js" type="text/javascript"></script>
-            
-            <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
-        </footer>
-    </body>
-</html>
+</main>
+<footer class="row middle-xs center-xs">
+    
+    <div class="col-xs-3 col-md-2"><a href="https://github.com/ddspog">GitHub</a></div>
+       
+    <div class="col-xs-12">
+         Copyright &copy; 2017 Neat as Wine.   Theme developed by <a href="https://tomanistor.com">Toma Nistor</a>. 
+    </div>
+    
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    
+    <script src="https://ddspog.github.io/neat-as-wine//scripts/main.js" type="text/javascript"></script>
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
+</footer>
+</body>
 
+</html>
