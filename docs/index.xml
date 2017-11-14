@@ -7,10 +7,30 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>true</copyright>
-    <lastBuildDate>Tue, 14 Nov 2017 00:56:51 -0200</lastBuildDate>
+    <lastBuildDate>Tue, 14 Nov 2017 01:22:40 -0200</lastBuildDate>
     
 	<atom:link href="https://ddspog.github.io/neat-as-wine/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Contato</title>
+      <link>https://ddspog.github.io/neat-as-wine/contact/</link>
+      <pubDate>Tue, 14 Nov 2017 01:22:40 -0200</pubDate>
+      
+      <guid>https://ddspog.github.io/neat-as-wine/contact/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sobre</title>
+      <link>https://ddspog.github.io/neat-as-wine/about/</link>
+      <pubDate>Tue, 14 Nov 2017 01:22:25 -0200</pubDate>
+      
+      <guid>https://ddspog.github.io/neat-as-wine/about/</guid>
+      <description>O blog Neat as Wine Um blog de degustação? Textos fanáticos sobre o assunto? Nada disso.
+Este blog discute dados Elegantes. Arrumados e limpinhos como o piso da casa de sua avó, em dia de almoço com a família. Dados em gráficos que brilham perante nossos olhos.
+Meu nome é Dênnis Dantas de Sousa, e sou um estudante de Data Science que adora UI bonitas. Assim, tendo a usar bastante tempo para embelezar meu código e meus gráficos.</description>
+    </item>
     
     <item>
       <title>O volume de Boqueirão</title>

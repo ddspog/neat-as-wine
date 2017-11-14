@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://ddspog.github.io/neat-as-wine/contact/</loc>
+    <lastmod>2017-11-14T01:22:40-02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ddspog.github.io/neat-as-wine/about/</loc>
+    <lastmod>2017-11-14T01:22:25-02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://ddspog.github.io/neat-as-wine/blog/boqueirao-volume/</loc>
     <lastmod>2017-11-14T00:56:51-02:00</lastmod>
   </url>
@@ -20,7 +30,7 @@
   
   <url>
     <loc>https://ddspog.github.io/neat-as-wine/</loc>
-    <lastmod>2017-11-14T00:56:51-02:00</lastmod>
+    <lastmod>2017-11-14T01:22:40-02:00</lastmod>
     <priority>0</priority>
   </url>
   
