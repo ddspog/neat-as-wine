@@ -1,5 +1,5 @@
 <!-- markdownlint-disable MD041 -->
-[![Logo](https://github.com/ddspog/osprey-ptbr/blob/master/static/images/wine-purple.png)](https://ddspog.github.io/neat-as-wine)
+[![Logo](https://github.com/ddspog/neat-as-wine/raw/master/static/images/wine-purple.png)](https://ddspog.github.io/neat-as-wine)
 <!-- markdownlint-enable MD041 -->
 
 # Neat as Wine [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
