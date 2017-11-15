@@ -8,4 +8,4 @@
 
 ## Theme
 
-This blog uses a theme called [osprey](https://github.com/tomanistor/osprey) translated to portuguese on a forked ´[version](https://github.com/ddspog/osprey-ptbr). All credits about theming should go to [tomanistor](https://tomanistor.com/).
+This blog uses a theme called [osprey](https://github.com/tomanistor/osprey) translated to portuguese on a forked [version](https://github.com/ddspog/osprey-ptbr). All credits about theming should go to [tomanistor](https://tomanistor.com/).
