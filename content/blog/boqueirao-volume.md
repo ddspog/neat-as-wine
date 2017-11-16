@@ -42,6 +42,24 @@ Se analisarmos em Dezembro de 2014 até Agosto de 2015, vemos que a vazão dimin
 
 Não podemos concluir nada. Segundo os dados o racionamento não fez mudança significativa na vazão da água. Em várias cidades, quem tivesse caixa d'água, praticamente não reduzia de consumo, apenas garantia uma cota semanal de água utilizada. Assim, fica difícil saber sobre a eficiência do racionamento em si.
 
+## Coleta regular?
+
+Os dados estudados aqui, foram obtidos por uma API do INSA (Instituto Nacional do Semiárido). E só observando o primeiro gráfico, podemos nos intrigar em relação a coleta de dados. O gráfico seguinte mostra a frequência mensal da coleta:
+
+<div id="grafico-coleta" class="no-vega-bar"></div>
+
+Até 1998, podemos perceber que a frequência das coletas era bem baixa. A partir de 1999, possivelmente motivado pelo governo, estiagem da época, as coletas de dados começaram a serem feitas diariamente. Entretanto, isso não se manteve todos os anos.
+
+De Fevereiro a Abril de 2004, um período que o açude começava a encher-se de água, decorrente as chuvas da época, houve quase nenhuma coleta. No mês de Fevereiro não houve nenhuma. Nos anos seguintes aparecem outros períodos de baixas coletas, sempre em pontos que o açude transbordava.
+
+A partir da estiagem longa, os dados voltaram a ser coletados em frequência diária. Mas por algum motivo, essa frequência foi diminuindo em 2014 a 2016, só aumentando com a perspectiva da transposição do Rio São Francisco chegando na Paraíba no início deste ano.
+
+Há vários questionamentos interessantes a serem feitos. O transbordar do açude dificultava a coleta? Houve motivos políticos para a redução de coletas duranta a estiagem? Entre outros questionamentos.
+
+## Por fim...
+
+Espero que tenham achado interessante a análise proposta aqui. Os dados foram tirados da api do INSA, a partir do link <https://api.insa.gov.br/reservatorios/12172/monitoramento>. Espero que tenham ficados motivados a analisar os dados também. Até a próxima!
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vega/3.0.7/vega.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-lite/2.0.1/vega-lite.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-embed/3.0.0-rc7/vega-embed.js"></script>
@@ -182,11 +200,52 @@ Não podemos concluir nada. Segundo os dados o racionamento não fez mudança si
             }
         };
 
+        const GraficoColeta = {
+            "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+            "data": {
+                "values": dados.volumes
+            },
+            "title": {
+                "text": "Nº de Coletas Mensais no Açude Boqueirão 1999-2017"
+            },
+            "height": 295,
+            "mark": "point",
+            "encoding": {
+                "x": {
+                    "timeUnit": "year",
+                    "field": "DataInformacao",
+                    "type": "temporal",
+                    "axis": {
+                        "title": ""
+                    }
+                },
+                "y": {
+                    "timeUnit": "month",
+                    "field": "DataInformacao",
+                    "type": "temporal",
+                    "axis": {
+                        "title": ""
+                    }
+                },
+                "size": {
+                    "aggregate": "count", 
+                    "field": "Volume", 
+                    "type": "quantitative",
+                    "legend": {
+                        "title": "Número de coletas"
+                    }
+                }
+            }
+        };
+
         vegaEmbed('#grafico-percentual', GraficoPercentual, {
             "width": $('#grafico-percentual').width() * 0.8
         }).catch(console.warn);
         vegaEmbed('#grafico-vazao', GraficoVazao, {
             "width": $('#grafico-vazao').width() * 0.8
+        }).catch(console.warn);
+        vegaEmbed('#grafico-coleta', GraficoColeta, {
+            "width": $('#grafico-coleta').width() * 0.8
         }).catch(console.warn);
     })
 </script>
