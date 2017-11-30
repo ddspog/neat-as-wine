@@ -4,8 +4,10 @@ tags = ["data visualization", "data analysis", "data science", "blog"]
 languageCode = "pt-br"
 config = "config.toml"
 theme = "osprey-ptbr"
+staticDir = ["static", "node_modules"]
 publishDir = "docs"
 DisqusShortname = "neat-as-wine"
+ignoreFiles = ["\\*.d.ts"]
 
 [Params]
     tagline = "DataVis Blog por ddspog"
