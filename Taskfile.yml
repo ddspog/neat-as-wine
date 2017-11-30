@@ -1,4 +1,11 @@
+add-static-modules:
+  cmds:
+    - echo "Adding modules to static folder..."
+    - .\node_modules\.bin\webpack .\node_modules\ddspog-d3-kit\import.js static\scripts\ddspog-d3-kit.js
+  silent: true
+
 local:
+  deps: [add-static-modules]
   cmds:
     - echo "Running site on localhost ..."
     - hugo server -D --disableFastRender --disableLiveReload
@@ -6,4 +13,5 @@ local:
 compile:
   cmds:
     - echo "Compiling site to docs/ ..."
-    - hugo
+    - rm -rf docs
+    - hugo --cleanDestinationDir 
