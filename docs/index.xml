@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>true</copyright>
-    <lastBuildDate>Tue, 14 Nov 2017 01:22:40 -0200</lastBuildDate>
+    <lastBuildDate>Wed, 29 Nov 2017 11:47:46 -0200</lastBuildDate>
     
 	<atom:link href="https://ddspog.github.io/neat-as-wine/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Treinando D3 com Boqueirão</title>
+      <link>https://ddspog.github.io/neat-as-wine/blog/boqueirao-d3/</link>
+      <pubDate>Wed, 29 Nov 2017 11:47:46 -0200</pubDate>
+      
+      <guid>https://ddspog.github.io/neat-as-wine/blog/boqueirao-d3/</guid>
+      <description>Treinando D3 com Boqueirão Estou testando o gráfico primeiro, para depois escrever o post.
+    .mychart text { font: 12px sans-serif; text-anchor: left; }  &#34;use strict&#34; class Box { constructor(measurements) { if (typeof (measurements) === &#39;string&#39;) { this._values = measurements.split(&#34; &#34;); this._string = measurements; } else if (Array.isArray(measurements)) { this._values = measurements; this._string = measurements.join(&#34; &#34;); } } toString() { return this._string; } get minX() { return this.</description>
+    </item>
     
     <item>
       <title>Contato</title>
