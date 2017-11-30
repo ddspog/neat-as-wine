@@ -1,0 +1,27 @@
+{
+  "name": "neat-as-wine",
+  "version": "1.1.0",
+  "description": "Blog about data visualization neat as wine.",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "ddspog-d3-kit": "^0.3.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ddspog/neat-as-wine.git"
+  },
+  "keywords": [
+    "blog",
+    "data",
+    "science"
+  ],
+  "author": "Dênnis Sousa <ddspog@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ddspog/neat-as-wine/issues"
+  },
+  "homepage": "https://github.com/ddspog/neat-as-wine#readme"
+}
