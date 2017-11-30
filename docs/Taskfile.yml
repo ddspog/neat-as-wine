@@ -1,9 +1,0 @@
-local:
-  cmds:
-    - echo "Running site on localhost ..."
-    - hugo server -D --disableFastRender --disableLiveReload
-
-compile:
-  cmds:
-    - echo "Compiling site to docs/ ..."
-    - hugo
