@@ -138,7 +138,9 @@ draft: false
 
 Neste post, irei tratar sobre um conjunto de dados sobre o Açude Velho em Campina Grande. Trata-se de uma análise de pedestres e automóveis que passam sobre determinados pontos no Açude. Os dados foram coletados pelo [LabRua](https://labrua.github.io/site-labrua/), aonde os integrantes do grupo contaram carros, motos, pedestres, ciclistas, entre outros passantes.
 
-Os dados foram coletados em 3 pontos diferentes: no monumento feito em comemoração aos 150 anos de Campina Grande, mais conhecido como o "Monumento dos Burrinhos"; o famoso monumento de Jackson do Pandeiro ao lado de Luiz Gonzaga; e por fim uma franquia da rede Bob's.
+Os dados foram coletados em 3 pontos diferentes: no monumento feito em comemoração aos 150 anos de Campina Grande, mais conhecido como o "Monumento dos Burrinhos"; o famoso monumento de Jackson do Pandeiro ao lado de Luiz Gonzaga; e por fim uma franquia da rede Bob's. Mostrados no mapa abaixo:
+
+![map](https://raw.githubusercontent.com/ddspog/neat-as-wine/master/static/images/acude-fluxo/map.png)
 
 # Olhando os Dados
 
