@@ -68,46 +68,42 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 var {
-    range
+    range, LayoutBox
 } = __webpack_require__(1);
 
 window.range = range;
+window.LayoutBox = LayoutBox;
 
 /***/ }),
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
+// index.js
+var functions = __webpack_require__(2)
+var elements = __webpack_require__(4)
 
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+module.exports = {
+    range: functions.range,
+    LayoutBox: elements.LayoutBox
 }
-Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(2));
-
 
 /***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
+// functions/index.js
+var generators = __webpack_require__(3)
 
-Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * Creates a range of numbers in an array, starting at a specified number and
- * ending before a different specified number.
- * @param {number} start  Indicates what number should be used as the first
- *     number in the returned array.  If this is the only number argument
- *     supplied, this will be used as the edge and 0 will be used as the start.
- * @param {number=} edge  Indicates the first number that should not appear in
- *     the range of numbers.  If this number preceeds the start in the range
- *     (taking into account the step), an empty array will be returned.  If not
- *     specified and not inferred this defaults to 0.
- * @param {number=} step  Indicates the difference between one number and the
- *     subsequent number placed in the returned array.  If not specified this
- *     defaults to 1.
- * @return {!Array.<number>}  Array of numbers in the specified range.
- */
+module.exports = {
+    range: generators.range
+}
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+// functions/generators.js
+
 function range_number(start, edge, step) {
     // Create the array of numbers, stopping before the edge.
     for (var ret = []; (edge - start) * step > 0; start += step) {
@@ -115,19 +111,7 @@ function range_number(start, edge, step) {
     }
     return ret;
 }
-/**
- * Creates a range of chars in an array, starting at a specified char and
- * ending before a different specified char.
- * @param {string} start  Indicates what char should be used as the first
- *     char in the returned array.
- * @param {string=} edge  Indicates the first char that should not appear in
- *     the range of chars. If this char preceeds the start in the range
- *     (taking into account the step), an empty array will be returned.
- * @param {number=} step  Indicates the difference between one char and the
- *     subsequent char placed in the returned array. If not specified this
- *     defaults to 1.
- * @return {!Array.<char>} Array of chars in the specified range.
- */
+
 function range_char(start, edge, step) {
     var startN = start.charCodeAt(0);
     var edgeN = edge.charCodeAt(0);
@@ -164,8 +148,174 @@ function range(start, edge, step) {
         return ret;
     }
 }
+
 exports.range = range;
 
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// elements/index.js
+var layoutBox = __webpack_require__(5)
+
+module.exports = {
+    LayoutBox: layoutBox.LayoutBox
+}
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+/**
+ * LayoutBox represents a layout ruled by four measures, this can
+ * comprehend margins, visualizations objects, Viewbox, etc.
+ */
+class LayoutBox {
+    /**
+     * Simple constructor for LayoutBox.
+     * @param {any=} measurements Dictates the four measures of the box,
+     * being as a string or as an Array.
+     */
+    constructor(measurements) {
+        if (typeof (measurements) === 'string') {
+            this._values = measurements.split(" ");
+            this._string = measurements;
+        } else if (Array.isArray(measurements)) {
+            this._values = measurements;
+            this._string = measurements.join(" ");
+        }
+    }
+
+    /**
+     * Returns the LayoutBox measures as a string.
+     */
+    toString() {
+        return this._string;
+    }
+
+    /**
+     * Get minimum x value of box.
+     */
+    get minX() {
+        return this._values[0];
+    }
+
+    /**
+     * Set minimum x value of box.
+     * @param {string=} val the minimum x value of box.
+     */
+    set minX(val) {
+        this._values[0] = val;
+    }
+
+    /**
+     * Get top measure of box.
+     */
+    get top() {
+        return this._values[0];
+    }
+
+    /**
+     * Set top measure of box.
+     * @param {string=} val the top measure of box.
+     */
+    set top(val) {
+        this._values[0] = val;
+    }
+
+    /**
+     * Get minimum y value of box.
+     */
+    get minY() {
+        return this._values[1];
+    }
+
+    /**
+     * Set minimum y value of box.
+     * @param {string=} val the minimum y value of box.
+     */
+    set minY(val) {
+        this._values[1] = val;
+    }
+
+    /**
+     * Get right measure of box.
+     */
+    get right() {
+        return this._values[1];
+    }
+
+    /**
+     * Set right measure of box.
+     * @param {string=} val the right measure of box.
+     */
+    set right(val) {
+        this._values[1] = val;
+    }
+
+    /**
+     * Get width of box.
+     */
+    get width() {
+        return this._values[2];
+    }
+
+    /**
+     * Set width of box.
+     * @param {string=} val the width of box.
+     */
+    set width(val) {
+        this._values[2] = val;
+    }
+
+    /**
+     * Get bottom measure of box.
+     */
+    get bottom() {
+        return this._values[2];
+    }
+
+    /**
+     * Set bottom measure of box.
+     * @param {string=} val the bottom measure of box.
+     */
+    set bottom(val) {
+        this._values[2] = val;
+    }
+
+    /**
+     * Get height of box.
+     */
+    get height() {
+        return this._values[3];
+    }
+
+    /**
+     * Set height of box.
+     * @param {string=} val the height of box.
+     */
+    set height(val) {
+        this._values[3] = val;
+    }
+
+    /**
+     * Get left measure of box.
+     */
+    get left() {
+        return this._values[3];
+    }
+
+    /**
+     * Set left measure of box.
+     * @param {string=} val the left measure of box.
+     */
+    set left(val) {
+        this._values[3] = val;
+    }
+}
+
+exports.LayoutBox = LayoutBox;
 
 /***/ })
 /******/ ]);

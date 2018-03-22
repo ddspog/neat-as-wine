@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>true</copyright>
-    <lastBuildDate>Wed, 29 Nov 2017 11:47:46 -0200</lastBuildDate>
+    <lastBuildDate>Wed, 21 Mar 2018 19:16:01 -0300</lastBuildDate>
     
 	<atom:link href="https://ddspog.github.io/neat-as-wine/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Fluxo de Pessoas no Açude Velho</title>
+      <link>https://ddspog.github.io/neat-as-wine/blog/acude-fluxo/</link>
+      <pubDate>Wed, 21 Mar 2018 19:16:01 -0300</pubDate>
+      
+      <guid>https://ddspog.github.io/neat-as-wine/blog/acude-fluxo/</guid>
+      <description>@import url(&#34;https://fonts.googleapis.com/css?family=Oswald:500&#34;); div.placeOp { position: relative !important; width: 100%; top: 50px; text-align: center; } div.placeOp button, div.placeOp p { font-family: &#39;Oswald&#39;, sans-serif; font-style: regular; text-decoration: none; color: #16151b; margin: 0 15px; font-size: 16px; letter-spacing: 1px; position: relative; display: inline-block; border: none; padding: 0; background: none; } div.placeOp button:before { content: &#39;&#39;; position: absolute; width: 100%; height: 3px; background: #16151b; top: 47%; animation: out 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both; } div.</description>
+    </item>
     
     <item>
       <title>Treinando D3 com Boqueirão</title>
@@ -19,7 +28,7 @@
       
       <guid>https://ddspog.github.io/neat-as-wine/blog/boqueirao-d3/</guid>
       <description>Treinando D3 com Boqueirão Estou testando o gráfico primeiro, para depois escrever o post.
-    .mychart text { font: 12px sans-serif; text-anchor: left; }  &#34;use strict&#34; class Box { constructor(measurements) { if (typeof (measurements) === &#39;string&#39;) { this._values = measurements.split(&#34; &#34;); this._string = measurements; } else if (Array.isArray(measurements)) { this._values = measurements; this._string = measurements.join(&#34; &#34;); } } toString() { return this._string; } get minX() { return this.</description>
+    .mychart text { font: 12px sans-serif; text-anchor: left; }  &#34;use strict&#34; var viewbox = new LayoutBox(&#34;0 0 450 415&#34;); var margin = new LayoutBox(&#34;10 20 45 45&#34;); var vis = new LayoutBox([ 0, 0, viewbox.width - margin.left - margin.right, viewbox.height - margin.top - margin.bottom ]); function boqueiraoBoxplotMesChuva(dados) { var graph = d3.</description>
     </item>
     
     <item>

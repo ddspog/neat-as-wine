@@ -5,7 +5,6 @@ add-static-modules:
   silent: true
 
 local:
-  deps: [add-static-modules]
   cmds:
     - echo "Running site on localhost ..."
     - hugo server -D --disableFastRender --disableLiveReload
