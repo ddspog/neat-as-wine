@@ -6,6 +6,10 @@ draft: false
 <!-- markdownlint-disable MD033 -->
 <style>
     @import url("https://fonts.googleapis.com/css?family=Oswald:500");
+    #chart {
+        position: relative;
+    }
+    
     div.placeOp {
         position: relative !important;
         width: 100%;
@@ -149,18 +153,18 @@ Coloquei este gráfico abaixo para explorarmos os dados coletados. O gráfico pe
 Na parte de baixo pode-se selecionar ou dar uma espiada no número de passantes em cada horário por tipo. Os tipos de passantes são: carros, motos, ônibus, caminhões, ciclistas e pedestres. Ao passar o mouse por cima de um dos nomes, a linha dos dados é destacada e informações de média, mínimo e máximo são mostradas.
 
 <div id="chart">
-<div class="placeOp">
-    <p>Escolha o local dos dados:</p>
-    <button id="burrinhos">Burrinhos</button>
-    <button id="jackson" class="placeActive">Jackson</button>
-    <button id="bobs">Bob's</button>
-</div>
-<div id="tooltip" class="hidden">
-    <p><strong>Detalhes:</strong></p>
-    <p>- Média: <span id="meanTip"></span></p>
-    <p>- Mínimo: <span id="minTip"></span></p>
-    <p>- Máximo: <span id="maxTip"></span></p>
-</div>
+    <div class="placeOp">
+        <p>Escolha o local dos dados:</p>
+        <button id="burrinhos">Burrinhos</button>
+        <button id="jackson" class="placeActive">Jackson</button>
+        <button id="bobs">Bob's</button>
+    </div>
+    <div id="tooltip" class="hidden">
+        <p><strong>Detalhes:</strong></p>
+        <p>- Média: <span id="meanTip"></span></p>
+        <p>- Mínimo: <span id="minTip"></span></p>
+        <p>- Máximo: <span id="maxTip"></span></p>
+    </div>
 </div>
 
 ## Analisando os locais

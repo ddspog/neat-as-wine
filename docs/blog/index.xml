@@ -18,7 +18,7 @@
       <pubDate>Wed, 21 Mar 2018 19:16:01 -0300</pubDate>
       
       <guid>https://ddspog.github.io/neat-as-wine/blog/acude-fluxo/</guid>
-      <description>@import url(&#34;https://fonts.googleapis.com/css?family=Oswald:500&#34;); div.placeOp { position: relative !important; width: 100%; top: 50px; text-align: center; } div.placeOp button, div.placeOp p { font-family: &#39;Oswald&#39;, sans-serif; font-style: regular; text-decoration: none; color: #16151b; margin: 0 15px; font-size: 16px; letter-spacing: 1px; position: relative; display: inline-block; border: none; padding: 0; background: none; } div.placeOp button:before { content: &#39;&#39;; position: absolute; width: 100%; height: 3px; background: #16151b; top: 47%; animation: out 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both; } div.</description>
+      <description>@import url(&#34;https://fonts.googleapis.com/css?family=Oswald:500&#34;); #chart { position: relative; } div.placeOp { position: relative !important; width: 100%; top: 50px; text-align: center; } div.placeOp button, div.placeOp p { font-family: &#39;Oswald&#39;, sans-serif; font-style: regular; text-decoration: none; color: #16151b; margin: 0 15px; font-size: 16px; letter-spacing: 1px; position: relative; display: inline-block; border: none; padding: 0; background: none; } div.placeOp button:before { content: &#39;&#39;; position: absolute; width: 100%; height: 3px; background: #16151b; top: 47%; animation: out 0.</description>
     </item>
     
     <item>

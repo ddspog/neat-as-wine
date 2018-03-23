@@ -1,0 +1,277 @@
+---
+title: "Brasil e o Ensino Básico"
+date: 2018-03-22T21:25:54-03:00
+draft: true
+---
+
+# Nossos professores são bem formados?
+
+
+<style>
+
+/*python -m SimpleHTTPServer*/
+
+.cidades {
+  fill: none;
+  stroke: #fff;
+  stroke-linejoin: round;
+}
+
+path:hover, path.highlighted {
+  fill: #FF4081;
+}
+
+div.tooltip {
+  position: absolute;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  font-family:"avenir next", Arial, sans-serif;
+  padding: 4px 8px;
+  display: none;
+}
+
+</style>
+
+<div>
+<h5>Modo de visualizacao:<h5>
+<div class="left">
+  <div id="controls"></div >
+</div>
+<div class="svg2" id="svg2"></div>
+</div>
+<svg width="1000" height="600"></svg>
+
+<p>É notório que boa parte do mapa se preenche nas cores relacionadas as notas no
+intervalo 3.0-4.5-6.0. O segunda média de notas que mais se destaca é das cidades
+no intervalo 6.0-7.5, que estão mais concentrados nas regiões Sul e Sudeste.
+São mínimos os valores abaixo de 3 e maiores que 7.5, estes não apresentam uma
+área específica de concentração.</p>
+
+<p>Ao se mudar a perspectiva de visão para metas atingidas o cenário apresenta
+outras características. Aparentemente a proporção de municípios que atingiram
+a meta é maior.</p>
+
+<h4>Algumas observações:</h4>
+
+<p><li>O litoral do nordeste não apresenta uma cor muito predominante,
+mas é possível observar uma grande mancha azul na área referente ao Ceará e parte
+de outros estados como Pernambuco e Bahia.</li></p>
+
+<p><li>A região Centro-Oeste apresenta uma pedominância de municípios que
+  atingiram a média.</li></p>
+
+<p><li>A fronteira esquerda do país também apresenta uma pedominância de
+  municípios que atingiram a média.</li></p>
+
+<br>
+<i>Por: Martha Michelly G M</i>
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script src="https://d3js.org/topojson.v2.min.js"></script>
+<script src="../legenda-d3-cor0.js"></script>
+<script>
+
+var alturaSVG = 600, larguraSVG = 1000;
+var	margin = {top: 10, right: 10, bottom:10, left: 15}, // para descolar a vis das bordas do grafico
+    larguraVis = larguraSVG - margin.left - margin.right,
+    alturaVis = alturaSVG - margin.top - margin.bottom;
+
+var svg = d3.select("svg")
+          .attr('viewBox', '0 0 '+(larguraVis + margin.left + margin.right)+' '+(alturaVis + margin.top + margin.bottom))
+          .attr('width', '100%'),
+    width = +svg.attr("width"),
+    height = +svg.attr("height");
+
+var svg2 = d3.select("#svg2").append('svg');;
+
+
+var path = d3.geoPath();
+
+// a escala de cores
+var color = d3.scaleThreshold()
+              .domain(d3.range(0,8.5,1.5))
+              .range(d3.schemeSpectral[7]);
+
+var getSVG;
+
+// função aux definida em legenda-d3-cor.js
+desenhaLegenda(0, 8.5, color, "Notas no IDEB em 2015")
+
+d3.queue()
+    .defer(d3.json, "https://raw.githubusercontent.com/michellymenezes/portifolio-visualizacao/master/data/geo4-municipios-e-educacao-basica-simplificado.json")
+    .await(ready);
+
+    d3.queue()
+        .defer(d3.json, "https://raw.githubusercontent.com/michellymenezes/portifolio-visualizacao/master/data/geo4-municipios-e-educacao-basica-simplificado.json")
+        .await(readyLegend);
+
+function ready(error, dados) {
+  if (error) throw error;
+
+  var cidades = dados.features;
+  // var zoom = d3.zoom()
+  //         .on("zoom", zoomed);
+  //
+  // function zoomed() {
+  //         d3.selectAll("path")
+  //
+  //         .attr("transform", d3.event.transform);
+  //     }
+
+  svg.append("g")
+      .attr("class", "cidades")
+    .selectAll("path")
+    .data(cidades)
+    .enter()
+    .append("path")
+//    .call(zoom)
+//    .call(zoom.transform, d3.zoomIdentity.translate(-300,-220).scale(1.7,1.7))
+    .attr("stroke-width", d => {return 0.2 })
+    .attr("stroke", d => {return "#000000" })
+    .attr("fill", d => {valor = d.properties["nota_2015"]; return valor === "NA" ? '#e0e0eb' : color(valor)})
+      .attr("d", path)
+      .on("mouseover",showTooltip)
+      .on("mousemove",moveTooltip)
+      .on("mouseout",hideTooltip)
+
+
+}
+
+
+function readyLegend(error, dados) {
+  if (error) throw error;
+
+  var cidades = dados.features;
+
+    var  margin = {top: 50, right: 30, bottom: 0, left: 20},
+      width = 800 - margin.left  - margin.right,
+      height = 200 - margin.top - margin.bottom,
+      g = svg2
+      .attr('viewBox', '0 0 '+(width + margin.left + margin.right)+' '+(height + margin.top + margin.bottom))
+      .attr('width', '100%')
+      .append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+      var colors = ["#fc8d59", "#3288bd"]
+
+      d3.select("#controls").selectAll("button.teams")
+            .data(["Por notas", "Por metas atingidas"])
+            .enter()
+              .append("button")
+              .attr("class", "btn-default")
+               .on("click", mudaDimensao)
+               .html(d => d);
+
+     function mudaDimensao(dimensaoSelecionada) {
+       dimensao = dimensaoSelecionada;
+
+       if(dimensaoSelecionada == "Por notas"){
+         color = d3.scaleThreshold()
+                       .domain(d3.range(0,8.5,1.5))
+                       .range(d3.schemeSpectral[7]);
+
+         svg.selectAll("path")
+           .data(cidades)
+           .transition().duration(100).delay((d,i) => i * 0.15 )
+           .attr("fill", d => {valor = d.properties["nota_2015"]; return valor === "NA" ? '#e0e0eb' : color(valor)})
+
+
+      } else{
+        svg.selectAll("path")
+          .data(cidades)
+          .transition().duration(100).delay((d,i) => i * 0.15)
+          .attr("fill", d => {var valor = 0; if(d.properties["nota_2015"] >= d.properties["meta_2015"]) valor =1; return valor === "NA" ? '#e0e0eb' : colors[valor]})
+      }
+     }
+
+
+  var legendElementWidth = Math.floor(((220 - margin.left) / 2)),
+  gridSize = Math.floor(larguraVis / 15);
+
+  var colorScale = d3.scaleThreshold()
+      .domain(["Não atingiu", "Atingiu"])
+      .range([0].concat(colors));
+
+  var legend = g.selectAll(".legend")
+      .data(colorScale.domain(), function(d) { return d; })
+      .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", "translate(580,-500)");
+
+      legend.append("text")
+          .attr("class", "caption")
+          .attr("x", 0 )
+          .attr("y", alturaVis - 10)
+          .attr("fill", "#000")
+          .attr("text-anchor", "start")
+          .attr("font-size", "15")
+          .attr("font-family", "sans-serif")
+          .text("Sobre o alcance da meta");
+
+  legend.append("rect")
+    .attr("x", function(d, i) { return legendElementWidth * i; })
+    .attr("y", alturaVis)
+    .attr("align", "right")
+    .attr("width", legendElementWidth)
+    .attr("height", 10)
+    .style("fill", function(d, i) { return colors[i]; });
+
+  legend.append("text")
+    .attr("class", "mono")
+    .text(function(d) { return d})
+    .attr("font-size", "15")
+    .attr("font-family", "sans-serif")
+    .attr("x", function(d, i) { return legendElementWidth * i; })
+    .attr("y", alturaVis + 30);
+}
+
+// ZOOM
+
+//create zoom handler
+var zoom_handler = d3.zoom()
+
+    .on("zoom", zoom_actions);
+
+//specify what to do when zoom event listener is triggered
+function zoom_actions(){
+ d3.selectAll("path")
+ .attr("transform", d3.event.transform)
+
+  //  .attr("transform","translate(-300,-220)scale(1.7,1.7)")
+
+}
+
+//add zoom behaviour to the svg element
+//same as svg.call(zoom_handler);
+zoom_handler(svg);
+//zoom_handler(svg);
+
+
+
+// TOOLTIP
+
+//Create a tooltip, hidden at the start
+var tooltip = d3.select("body").append("div").attr("class","tooltip");
+//Position of the tooltip relative to the cursor
+var tooltipOffset = {x: 5, y: -25};
+
+function showTooltip(d) {
+  moveTooltip();
+
+  tooltip.style("display","block")
+          .html(d.properties.Localidade + "/" + d.properties["UF"] + "/" +  d.properties["REGIAO"]+ "</br>Nota: " + d.properties["nota_2015"] + "</br>Meta: " + d.properties["meta_2015"]);
+}
+
+//Move the tooltip to track the mouse
+function moveTooltip() {
+  tooltip.style("top",(d3.event.pageY+tooltipOffset.y)+"px")
+      .style("left",(d3.event.pageX+tooltipOffset.x)+"px");
+}
+
+//Create a tooltip, hidden at the start
+function hideTooltip() {
+  tooltip.style("display","none");
+}
+
+</script>

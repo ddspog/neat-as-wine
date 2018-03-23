@@ -149,7 +149,7 @@ var render = function (options) {
                     if(info[i].active) {
                         return "25px";
                     } else {
-                        return "16px"
+                        return "16px";
                     }
                 })
                 .on("click", (function(index) {
@@ -191,8 +191,8 @@ var render = function (options) {
                         var yPosition = height + (margin.bottom / 2) + 5;
                         //Update the tooltip position and value
                         var tooltip = d3.select("#tooltip")
-                            .style("left", (180 + xPosition) + "px")
-                            .style("bottom", yPosition - 30 + "px");
+                            .style("left", xPosition + "px")
+                            .style("top", yPosition - 180 + "px");
                         
                         getValue = function(d) {return d.values[index];};
 
